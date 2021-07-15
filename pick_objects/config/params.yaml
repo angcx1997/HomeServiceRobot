@@ -1,0 +1,17 @@
+pick_up:
+  tx: 4.0
+  ty: 5.6
+  tz: 0.0
+  qx: 0.0
+  qy: 0.0
+  qz: 0.0
+  qw: 1
+
+drop_off:
+  tx: 3.478
+  ty: 0.519
+  tz: 0.0
+  qx: 0.0
+  qy: 0.0
+  qz: 0
+  qw: 1
