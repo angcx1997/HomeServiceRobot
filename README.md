@@ -43,4 +43,6 @@ cd ~/catkin_ws/src/scripts
 
 `amcl_demo.launch`: launch ros navigation stack
 
+### Rviz Interface
+![](https://github.com/angcx1997/HomeServiceRobot/blob/main/img/Screenshot%20from%202021-07-16%2014-53-02.png)
 
