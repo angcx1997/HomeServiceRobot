@@ -46,3 +46,11 @@ cd ~/catkin_ws/src/scripts
 ### Rviz Interface
 ![](https://github.com/angcx1997/HomeServiceRobot/blob/main/img/Screenshot%20from%202021-07-16%2014-53-02.png)
 
+### To run in a new environment
+You can perform the node using you own environment,
+1. Import your world into `maps`
+2. Perform a gmapping on your environment by running script `test_slam.sh`
+3. After finish mapping out the environment, save the map by running `rosrun map_server map_saver -f myMap` in terminal
+4. Put the `.pgm` and `.yaml` file into `maps`
+5. The initial pose in `amcl_demo.launch` need to be the same as `turtlebot3_myworld.launch`, so that robot is able to localize itself at the right place when the program run.
+6. To find out the pose that you wish to go, you could use `2D nav goal` in rviz, and read the pose by `rostopic echo /amcl_pose`
