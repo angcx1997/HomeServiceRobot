@@ -38,7 +38,9 @@ cd ~/catkin_ws/src/scripts
 ```
 
 `turtlebot3_myworld.launch`: launch turtlebot3 inside gazebo world
+
 `turtlebot3_myworld_rviz.launch`: launch rviz to visualize the topics
+
 `amcl_demo.launch`: launch ros navigation stack
 
 
