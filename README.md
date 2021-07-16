@@ -44,4 +44,3 @@ cd ~/catkin_ws/src/scripts
 `amcl_demo.launch`: launch ros navigation stack
 
 
-
