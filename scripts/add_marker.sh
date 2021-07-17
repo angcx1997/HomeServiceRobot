@@ -7,4 +7,4 @@ sleep 5
 xterm -e "roslaunch turtlebot3_navigation amcl_demo.launch" &
 sleep 5
 xterm -e "rosparam load $(pwd)/../pick_objects/config/params.yaml;
-rosrun add_markers add_markers"
+rosrun add_markers test_add_markers"
