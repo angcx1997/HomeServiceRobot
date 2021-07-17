@@ -1,10 +1,19 @@
 # HomeServiceRobot
 
 The goal of this project is to design a environment for the mobile-base robot (in our application, turtlebot3 is used) and program it to performance localization and navigate itself to a pick-up point to pick-up virtual object projected in rviz then drop-it back to preset location.
-- slam_gmapping is used in mapping environment
-- ROS navigation stack is used in performing motion-planning and AMCL as local path planner.
-- pick_object node publish the desired location to move_base
-- add_markers node publish the virtual object into rviz environment
+1. Initially show the marker at the pickup zone.
+2. Hide the marker once your robot reach the pickup zone.
+3. Wait 5 seconds to simulate a pickup.
+4. Show the marker at the drop off zone once your robot reaches it.
+
+
+### Package Used
+- `slam_gmapping` provides laser based Grid-based FastSLAM algorithms. It helps to build 2D occupancy grid map of the environment by feeding in laser scan measurement and odometry value. The map will be updated as the robot moves and throught the sensory information collected.
+- `ROS_Navigation/amcl` is probabilistic localization system to move a robot in 2D. It used adaptive Monte Carlo localization approach to track the pose of robot against a known map. Tuning parameter is required and in our application, due to limited sensory noise, the parameter is tuned to be relatively low. Initial localization and accurate help to speed up the convegence process.
+- `ROS_Navigation/move_base` helps interacting with `navigation stack` and output appropriate velocity to navigate the robot to desired goal pose. Trajectory rollout is help to perform local paht planning while Dijkstra's algorithms is used for global path planning.
+- `turtlebot3`, `turtlebot3_msgs` and `turtlebot3_simulation` contain the turtlebot model and gazebo simuation. All 3 packages needs to be install for the package to run smoothly in simulation. For this project,turtlebot3 burger is used but different model used would not affect the performance. 
+- `pick_up`  node sends the pick up and drop off point to `turtlebot3`. The point is sent to `move_base` server and then perform subsequent path planning.
+- `add_marker` node helps to visualize the pick-up and drop-off point by allocating a shape onto `rviz` generated maps. It subscribe to `pick_up` for action planning.
 
 ### Installation
 Execute the following commands in the terminal to set up workspace and clone the this repo
