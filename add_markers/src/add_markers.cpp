@@ -54,7 +54,7 @@ int main( int argc, char** argv )
     marker.type = shape;
 
     // Publish the marker
-    while (marker_pub.getNumSubscribers() < 1 && reach_state == 0)
+    while (marker_pub.getNumSubscribers() < 1 )
     {
       if (!ros::ok())
       {
@@ -66,7 +66,7 @@ int main( int argc, char** argv )
 
     switch (reach_state)
     {
-    case 1:{
+    case 0:{
       marker.action = visualization_msgs::Marker::ADD;
       n.getParam("/pick_up/tx", marker.pose.position.x);
       n.getParam("/pick_up/ty", marker.pose.position.y);
@@ -97,7 +97,7 @@ int main( int argc, char** argv )
       ROS_INFO_ONCE("Drop-off marker published");
       marker_pub.publish(marker);
 
-      reach_state = 0;
+      reach_state = 4;
       break;
     }
     

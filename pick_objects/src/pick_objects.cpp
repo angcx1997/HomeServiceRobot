@@ -42,8 +42,6 @@ int main(int argc, char** argv){
 
    // Send the goal position and orientation for the robot to reach
   ROS_INFO("Sending pick-up location");
-  state.data = 1;
-  marker_pub.publish(state);
   ac.sendGoal(goal);
 
   // Wait an infinite time for the results
@@ -61,8 +59,8 @@ int main(int argc, char** argv){
   }
   
 
-  // Sleep for 3 s
-  ros::Duration(3.0).sleep();
+  // Sleep for 5 s
+  ros::Duration(5.0).sleep();
 
 
   // Define a position and orientation for the robot to reach
@@ -76,8 +74,7 @@ int main(int argc, char** argv){
   
    // Send the goal position and orientation for the robot to reach
   ROS_INFO("Sending drop-off location");
-  state.data = 3;
-  marker_pub.publish(state);
+
   ac.sendGoal(goal);
 
   // Wait an infinite time for the results
@@ -86,7 +83,8 @@ int main(int argc, char** argv){
   // Check if the robot reached its goal
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){
     ROS_INFO("Hooray, the base moved towards drop-off location");
-    
+      state.data = 3;
+    marker_pub.publish(state);
     }
   else{
     ROS_INFO("The base failed to move to drop-off location for some reason");
